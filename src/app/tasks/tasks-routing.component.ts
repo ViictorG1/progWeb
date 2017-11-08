@@ -9,7 +9,7 @@ import { TasksComponent } from './tasks.component';
   imports: [
     RouterModule.forChild([
       {
-        path: '',
+        path: 'tasks',
         component: TasksComponent,
         children: [
           { path: '',         component: TasksListComponent }

@@ -4,6 +4,7 @@ body{
   background-attachment: fixed;
   background-size: 100% auto;
   height: 100vh;
+  font-family: 'Raleway', sans-serif;
 }
 
 .navbar-default {

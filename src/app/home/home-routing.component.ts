@@ -7,11 +7,10 @@ import { HomeComponent } from './home.component';
   imports: [
     RouterModule.forChild([
       {
-        path: 'home',
+        path: '',
         component: HomeComponent,
         children: [
-          { path: '',      component: HomeComponent },
-          { path: 'tasks', loadChildren: 'app/tasks/tasks.module#TasksModule' }
+          { path: '',      component: HomeComponent }
         ]
       }
     ])
