@@ -6,7 +6,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { HomeModule } from './home/home.module';
+import { HomeModule } from './home';
+import { LoginModule } from './login';
 import { TasksModule } from './tasks';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     BrowserModule,
     HomeModule,
+    LoginModule,
     TasksModule
   ],
   declarations: [
