@@ -1,25 +1,7 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a href="#">
-        <img class="logo" alt="MakeUList" src="../../assets/images/logo-white.png">
-      </a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Nova lista</a></li>
-      <li><a href="#">Contato</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <button type="button" class="btn btn-link btn-lg user-btn" aria-label="Left Align">
-        <span class="enter">Entrar</span> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-      </button>
-    </ul>
-  </div>
-</nav>
+<app-header></app-header>
 <main>
   <div class="container home-starter text-center">
     <h1>ORGANIZE AS SUAS TAREFAS!</h1>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Nova lista</a></p>
+    <p><a [routerLink]="['tasks']" class="btn btn-warning btn-lg" href="#" role="button">Nova lista</a></p>
   </div>
 </main>

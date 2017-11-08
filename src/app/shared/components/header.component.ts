@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: [ './home.component.scss' ]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: [ './header.component.scss' ]
 })
-export class HomeComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   user: any;
 

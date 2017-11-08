@@ -10,7 +10,8 @@ import { HomeComponent } from './home.component';
         path: 'home',
         component: HomeComponent,
         children: [
-          { path: '',         component: HomeComponent },
+          { path: '',      component: HomeComponent },
+          { path: 'tasks', loadChildren: 'app/tasks/tasks.module#TasksModule' }
         ]
       }
     ])

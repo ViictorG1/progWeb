@@ -1,9 +1,13 @@
+import * as $ from 'jquery';
+import 'bootstrap';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
 import { HomeModule } from './home/home.module';
+import { TasksModule } from './tasks';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,7 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    HomeModule
+    HomeModule,
+    TasksModule
   ],
   declarations: [
     AppComponent
