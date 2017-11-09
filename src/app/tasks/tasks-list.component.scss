@@ -1,35 +1,16 @@
 main {
   background-color: #efefef;
-  height: 100vh;
-}
-
-.new-container {
-  margin-bottom: 50px;
 }
 
 .new-list-container {
   background-color: #fff;
   min-height: 75px;
   height: 100%;
-  margin-top: 100px;
-  position: relative;
   border: 2px solid #e0e0e0;
 }
 
 .initial-points {
   margin-top: 18px;
-}
-
-.input-new-list {
-  width: 100%;
-}
-
-.btn-create {
-  margin-left: 10px;
-}
-
-.btn-color {
-  margin-right: 10px;
 }
 
 .btn-flex {
@@ -43,20 +24,10 @@ main {
   text-align: left;
 }
 
-.actual-items {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
 .task-container {
   background-color: #fff;
   color: #fff;
-  margin-bottom: 20px;
   border-left: 10px solid #efefef;
-}
-
-.task-container > h3 {
-  font-weight: 600;
 }
 
 .btn-color-pick {
@@ -65,28 +36,42 @@ main {
   border-radius: 20px;
 }
 
+.task-name {
+  line-height: 2;
+}
+
+.done-button {
+  top: 13px;
+  right: 15px;
+}
+
 .pick-{
   color: #000;
 }
 
 .pick-red {
-  background-color: rgb(248, 112, 112);  
+  background-color: rgb(248, 112, 112);
+  color: #fff;
 }
 
 .pick-blue {
-  background-color: rgb(112, 187, 248);  
+  background-color: rgb(112, 187, 248);
+  color: #fff;
 }
 
 .pick-green {
-  background-color: rgb(104, 161, 117);  
+  background-color: rgb(104, 161, 117);
+  color: #fff;
 }
 
 .pick-yellow {
   background-color: #ffe772;
+  color: #fff;
 }
 
 .pick-orange {
   background-color: rgb(248, 185, 112);  
+  color: #fff;
 }
 
 .pick-red-border {
@@ -111,4 +96,12 @@ main {
 
 .color {
   width: 100px;
+}
+
+.checkbox > label {
+  font-size: 14px;
+}
+
+.cr {
+  line-height: 0;
 }

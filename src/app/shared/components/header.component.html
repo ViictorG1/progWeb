@@ -1,19 +1,21 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a href="#">
+    <div class="navbar-header text-center">
+      <span (click)="collapseMenu()">
         <img class="logo" alt="MakeUList" src="../../assets/images/logo-white.png">
-      </a>
+      </span>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a routerLink="/tasks">Nova lista</a></li>
-      <li><a href="#">Contato</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <button type="button" class="btn btn-link btn-lg user-btn" aria-label="Left Align">
-        <span class="enter"><a routerLink="/login">Entrar</a></span> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-      </button>
-    </ul>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a routerLink="/tasks">Nova lista</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <button type="button" class="btn btn-link btn-lg user-btn" aria-label="Left Align">
+          <span class="enter"><a routerLink="/login">Entrar</a></span> <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        </button>
+      </ul>
+    </div>
   </div>
 </nav>

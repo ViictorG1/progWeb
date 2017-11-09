@@ -1,5 +1,13 @@
 .logo {
-  width: 160px;
+  width: 220px;
+}
+
+@media (max-width: 769px) {
+  .navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1500;
+  }
 }
 
 .navbar-header {

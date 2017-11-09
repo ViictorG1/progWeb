@@ -1,27 +1,24 @@
 main {
   background-color: #efefef;
-  height: 100vh;
 }
 
 .login-form {
-  margin-top: 150px;
+  margin-top: 10%;
 }
 
 .login-background {
   background-color: white;
   padding: 40px 35px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid #cccccc;
 }
 
 .logo {
-  width: 500px;
+  width: 100%;
 }
 
-.logo-container {
-  margin-bottom: 80px;
-}
-
-.btn-subscription {
-  margin-top: 30px;
+@media (max-width: 769px) {
+  .login-form {
+    margin-top: 30%;
+  }
 }

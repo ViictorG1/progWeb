@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -6,15 +6,22 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './header.component.html',
   styleUrls: [ './header.component.scss' ]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   user: any;
+  collapse: string = 'none';
 
   // constructor(
   // ) {}
 
-  ngOnInit() {
-
+  collapseMenu() {
+    if (this.collapse === 'block') {
+      this.collapse = 'none';
+      $('.collapse').css('display', 'none');    
+    } else {
+      this.collapse = 'block';
+      $('.collapse').css('display', 'block');
+    }
   }
 
 }

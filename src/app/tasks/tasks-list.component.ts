@@ -18,12 +18,6 @@ export class TasksListComponent {
   tasksList: any[] = [];
   actualItems: any[] = [];
 
-  paintAll() {
-    this.tasksList.forEach((task: any) => {
-      $(`#task-${task.name}`).css('background-color', task.color);
-    })
-  }
-
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.submiting = true;
@@ -36,12 +30,13 @@ export class TasksListComponent {
 
   checked(task: any, item: any) {
     item.checked = !item.checked;
+    console.log(task);
 
     let indexTask = this.tasksList.indexOf(task);
     let indexItem = task.items.indexOf(item);
 
-    if (indexItem) {
-      task.splice(indexItem, 1, item);
+    if (indexItem >= 0) {
+      task.items.splice(indexItem, 1, item);
       if (indexTask) {
         this.tasksList.splice(indexItem, 1, task);
       }
@@ -53,6 +48,23 @@ export class TasksListComponent {
     this.pickColor = false;
     $('#color-picker').addClass(`pick-${color}-border`);
     $('#color-picker').addClass(`pick-${color}`);
+  }
+
+  deleteItem(item: any) {
+    let index: number = this.actualItems.indexOf(item);
+
+    if (index >= 0) {
+      this.actualItems.splice(index, 1);
+    }
+  }
+
+  private doneTask(task: any) {
+    let index = this.tasksList.indexOf(task);
+    task.done = true;
+
+    if (index >= 0) {
+      this.tasksList.splice(index, 1, task);
+    }
   }
 
   private sendItem() {

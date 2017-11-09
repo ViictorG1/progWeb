@@ -1,10 +1,23 @@
 .home-starter {
-  margin-top: 30vh;
+  padding-top: 30vh;
   color: white;
 }
 
-.home-starter > h1 {
-  font-size: 65px;
-  font-weight: 600;
-  margin-bottom: 30px;
+main {
+  background-image: url('../../assets/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% auto;
+}
+
+@media (max-width: 670px) {
+  main {
+    background-size: 100vh 100vh;
+  }
+}
+
+@media (min-width: 671px) and (max-width: 1200px) {
+  main {
+    background-size: 100% 100vh;
+  }
 }
