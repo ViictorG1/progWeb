@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { NgForm } from '@angular/forms';
 
@@ -7,16 +7,27 @@ import { NgForm } from '@angular/forms';
   templateUrl: './tasks-list.component.html',
   styleUrls: [ './tasks-list.component.scss' ]
 })
-export class TasksListComponent {
+export class TasksListComponent implements OnInit {
 
   user: any;
   data: any = {};
   actualItem: string;
-  pickColor = false;  
+  saveButton: string = 'Criar';
+  editingTask: any;
+  pickColor = false; 
+  messageError = false; 
   submiting = false;
   moreOptions = false;
   tasksList: any[] = [];
   actualItems: any[] = [];
+
+  ngOnInit() {
+    $('#input-name').bind("enter-key", (event: any) => { this.sendItem(); });
+    $('#input-name').keyup((event: any) => {
+      if(event.keyCode == 13)
+      { $(this).trigger("enter-key"); }
+    });
+  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
@@ -25,12 +36,47 @@ export class TasksListComponent {
       if (this.data) {
         this.create();
       }
+    } else {
+      this.messageError = true;
     }
+  }
+
+  startText(task: any) {
+    if (task !== undefined) {
+      this.messageError = false;
+
+      if (task.length >= 2) {
+        this.moreOptions = true;
+      }
+    }
+
+    $('form').bind("enter-key", (event: any) => { this.sendItem(); });
+    $('form').keyup((event: any) => {
+      if(event.keyCode == 13)
+      { $(this).trigger("enter-key"); }
+    });
+  }
+
+  newItem() {
+    $('form').on('keyup keypress', function(e) {
+      var keyCode = e.keyCode || e.which;
+      if (keyCode === 13) {
+        e.preventDefault();
+        return false;
+      }
+    });
+  }
+
+  onClickEdit(task: any) {
+    this.moreOptions = true;
+    this.data = task;
+    this.editingTask = task;
+    this.actualItems = this.data.items;
+    this.saveButton = 'Salvar';
   }
 
   checked(task: any, item: any) {
     item.checked = !item.checked;
-    console.log(task);
 
     let indexTask = this.tasksList.indexOf(task);
     let indexItem = task.items.indexOf(item);
@@ -76,7 +122,15 @@ export class TasksListComponent {
   }
 
   private create() {
-    this.tasksList.push(this.data);
+    if (this.editingTask) {
+      let index = this.tasksList.indexOf(this.data);
+
+      if (index >= 0) {
+        this.tasksList.splice(index, 1, this.data);
+      }
+    } else {
+      this.tasksList.push(this.data);    
+    }
     this.resetForm();
   }
 
@@ -99,6 +153,7 @@ export class TasksListComponent {
     $('#color-picker').removeClass(`pick-${this.data.color}-border`);
     $('#color-picker').removeClass(`pick-${this.data.color}`);
     this.data = {};
+    this.editingTask = {};
   }
 
 }

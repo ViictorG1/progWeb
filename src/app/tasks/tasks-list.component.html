@@ -5,19 +5,25 @@
       <div class="col-md-8 col-xs-12 new-list-container position-relative mt-100">
         <form #lForm="ngForm" (submit)="onSubmit(lForm)" novalidate>
           <div class="row initial-points">
+            <div class="col-md-12 col-xs-12 pull-left">
+              <div class="pull-left">
+                <label>Nome da lista</label>               
+              </div>
+            </div>
             <div class="col-md-4 col-xs-5">
-              <input class="form-control w-100" maxlength="22" [(ngModel)]="data.name" name="name" type="text" placeholder="Nome da lista" required>            
+              <input id="input-name" class="form-control w-100" maxlength="22" (ngModelChange)="startText(data.name)" [(ngModel)]="data.name" name="name" type="text" placeholder="Supermercado" required>            
+              <div [hidden]="!messageError" class="text-danger">Insira o nome da lista</div>              
             </div>
             <div class="col-md-1"></div>
-            <div class="col-md-7 col-xs-7">
+            <div class="col-md-8 col-xs-8">
               <button type="submit" class="btn btn-success ml-10 pull-right" aria-label="Left Align">
-                Criar
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ saveButton }}
               </button>
               <button (click)="moreOptionsClicked()" type="button" class="btn btn-warning pull-right" aria-label="Left Align">
-                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Tarefas
               </button>
               <button id="color-picker" (click)="pickColor=!pickColor" type="button" class="btn btn-primary mr-10 pull-right" aria-label="Left Align">
-                <i class="fa fa-paint-brush" aria-hidden="true"></i>              
+                <i class="fa fa-paint-brush" aria-hidden="true"></i> Cor            
               </button>
               <div *ngIf="pickColor" class="colors">
                 <button (click)="chooseColor('red')" type="button" class="btn mr-10 pick-red btn-color-pick pull-right" aria-label="Left Align"></button>
@@ -32,20 +38,11 @@
             <hr/>
           </div>
           <div *ngIf="moreOptions" class="row moreOptions">
-            <!-- <div class="col-md-12">
-              <label>Padrões</label>
-              <select class="form-control">
-                <option>Supermercado</option>
-                <option>Supermercado</option>
-                <option>Exercícios escolares</option>
-                <option>Objetivos</option>
-              </select>
-            </div> -->
             <div class="col-md-12 col-sm-12">
               <label>Tarefas</label>
               <div class="row">
                 <div class="col-md-11 col-xs-10">
-                  <input class="form-control" [(ngModel)]="actualItem" name="actualItem" type="text" placeholder="Item">                  
+                  <input id="input-item" class="form-control" (ngModelChange)="newItem()" [(ngModel)]="actualItem" name="actualItem" type="text" placeholder="Item">                  
                 </div>
                 <div class="col-md-1 col-xs-2">
                   <button (click)="sendItem()" type="button" class="btn btn-primary btn-create pull-right" aria-label="Left Align">
@@ -75,7 +72,7 @@
   <div *ngIf="tasksList" class="container">
       <div class="col-md-12 col-xs-12">
         <div *ngFor="let task of tasksList">
-          <div *ngIf="!task.done" class="task-container col-md-4 col-xs-12 mb-20 pick-{{ task.color }}">
+          <div (click)="onClickEdit(task)" *ngIf="!task.done" class="task-container col-md-4 col-xs-12 mb-20 pick-{{ task.color }}">
             <div class="row pl-15">
               <h4 class="fweight-600 w-90 task-name">{{ task.name }}</h4> 
               <button (click)="doneTask(task)" type="button" class="btn btn-success btn-sm pull-right fweight-600 w-10 done-button position-absolute" aria-label="Left Align">
