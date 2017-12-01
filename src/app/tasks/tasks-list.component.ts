@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { NgForm } from '@angular/forms';
 
+import { TasksService } from '../shared/services/tasks.service';
+
 @Component({
   selector: 'tasks-list',
   templateUrl: './tasks-list.component.html',
@@ -20,6 +22,10 @@ export class TasksListComponent implements OnInit {
   moreOptions = false;
   tasksList: any[] = [];
   actualItems: any[] = [];
+
+  constructor(
+    private tasksService: TasksService
+  ) { }
 
   ngOnInit() {
     $('#input-name').bind("enter-key", (event: any) => { this.sendItem(); });
@@ -146,6 +152,14 @@ export class TasksListComponent implements OnInit {
     this.actualItem = '';
     this.moreOptions = false;
     this.actualItems = [];
+  }
+
+  private getTasks() {
+    this.tasksService
+    .getTasks()
+    .subscribe((tasks: any[]) => {
+      console.log(tasks);
+    });
   }
 
   private resetForm() {

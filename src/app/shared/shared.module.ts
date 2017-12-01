@@ -5,6 +5,9 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components';
 
+import { TasksService } from './services/tasks.service';
+import { RestClientService } from './services/rest-client.service';
+
 @NgModule({
   imports: [
     RouterModule,
@@ -20,10 +23,8 @@ import { HeaderComponent } from './components';
     HeaderComponent
   ],
   providers: [
-    /**
-     * Do not provide any service from ShareModule.
-     * Common services must be defined and provided by CoreModule.
-     **/
+    TasksService,
+    RestClientService
   ]
 })
 export class SharedModule {
